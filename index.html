@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>会计精学·词汇测验系统</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background: #eef2f9;
+            margin: 0;
+            min-height: 100vh;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .hero {
+            background: #0b2b44;
+            padding: 1rem 1.5rem;
+            color: white;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .hero p {
+            margin: 0.2rem 0 0;
+            opacity: 0.85;
+            font-size: 0.8rem;
+        }
+        .stats-toolbar {
+            background: #ffffffdd;
+            backdrop-filter: blur(8px);
+            padding: 0.6rem 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.6rem;
+            border-bottom: 1px solid #cfddee;
+        }
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .stat-badge {
+            background: #eef3fc;
+            border-radius: 40px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .stat-badge.master { background: #c8f0d1; color: #14532d; }
+        .stat-badge.unfamiliar { background: #fff3c4; color: #b45309; }
+        .stat-badge.wrong { background: #ffe2e2; color: #b91c1c; }
+        .stat-badge.def { background: #f3e8ff; color: #6b21a5; }
+        .stat-badge.remaining { background: #e0e7ff; color: #1e3a8a; }
+        .action-buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .small-btn {
+            background: #e2e8f0;
+            border: none;
+            border-radius: 30px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .small-btn.primary {
+            background: #1e4a76;
+            color: white;
+        }
+        .progress-section {
+            padding: 0.7rem 1.2rem;
+            background: #fafcff;
+        }
+        .progress-bar-bg {
+            background: #e2e8f0;
+            border-radius: 100px;
+            height: 6px;
+        }
+        .progress-fill {
+            background: #2b6e9e;
+            width: 0%;
+            height: 100%;
+            border-radius: 100px;
+            transition: width 0.2s;
+        }
+        .timer-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 0.75rem;
+        }
+        .timer-clock {
+            font-family: monospace;
+            background: #eef2f9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+        .question-panel {
+            padding: 1rem 1.2rem 1.2rem;
+        }
+        .english-word {
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-align: center;
+            background: #f0f6fe;
+            padding: 0.8rem;
+            border-radius: 1.5rem;
+            border: 1px solid #cbdde9;
+            word-break: break-word;
+            margin-bottom: 1rem;
+        }
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin: 0.6rem 0 0.8rem;
+        }
+        .option-btn {
+            background: white;
+            border: 1.5px solid #cbdde9;
+            border-radius: 1.2rem;
+            padding: 0.7rem 1rem;
+            font-size: 0.9rem;
+            text-align: left;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.1s;
+        }
+        .option-btn:active {
+            background: #e9f0f9;
+            transform: scale(0.98);
+        }
+        .feedback-msg {
+            background: #eef3fc;
+            border-radius: 1rem;
+            padding: 0.6rem;
+            font-size: 0.8rem;
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        button {
+            border: none;
+            background: #eef2f8;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .btn-blue {
+            background: #1e4a76;
+            color: white;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #8ba0bc;
+        }
+        .menu-screen, .result-screen {
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .menu-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        .big-btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            background: #1e4a76;
+            color: white;
+            border-radius: 3rem;
+            border: none;
+        }
+        .big-btn-outline {
+            background: transparent;
+            border: 2px solid #1e4a76;
+            color: #1e4a76;
+        }
+        .result-word-list {
+            background: white;
+            border-radius: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 0.5rem 0 1rem;
+            text-align: left;
+            border: 1px solid #e2edf2;
+        }
+        .word-clickable {
+            cursor: pointer;
+            padding: 0.4rem 0.8rem;
+            border-bottom: 1px solid #ecf3f9;
+            font-size: 0.8rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        .modal-card {
+            background: white;
+            max-width: 90%;
+            width: 380px;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+        }
+        .def-text {
+            background: #f4f9fe;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+            line-height: 1.4;
+        }
+        .hidden {
+            display: none;
+        }
+        footer {
+            font-size: 0.65rem;
+            text-align: center;
+            padding: 0.6rem;
+            background: #f1f6fc;
+            color: #4b5c74;
+        }
+        .error-box {
+            background: #fee2e2;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem;
+            color: #b91c1c;
+            text-align: center;
+        }
+        .file-input-label {
+            background: #1e4a76;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+        @media (max-width: 550px) {
+            .english-word {
+                font-size: 1.3rem;
+            }
+            .option-btn {
+                padding: 0.6rem 0.9rem;
+                font-size: 0.85rem;
+            }
+            .stats-toolbar {
+                padding: 0.5rem 1rem;
+            }
+            .stat-badge {
+                font-size: 0.7rem;
+            }
+            .big-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!-- 菜单界面 -->
+    <div id="menuScreen" class="card">
+        <div class="hero"><h1>📚 词汇精学 · 智能分阶</h1><p>支持外部CSV词汇表 | 自动加载vocab.csv</p></div>
+        <div class="menu-screen" id="menuContent">
+            <div id="loadErrorMsg" class="error-box hidden">
+                ⚠️ 未找到 vocab.csv 文件或加载失败。<br>
+                请手动选择词汇表文件（CSV格式，表头：英文,中文,定义）
+            </div>
+            <div class="menu-buttons">
+                <button id="startFreshBtn" class="big-btn" disabled>✨ 全新开始</button>
+                <label class="file-input-label" id="manualLoadLabel">📂 选择CSV词汇表
+                    <input type="file" id="csvFileInput" accept=".csv" style="display:none">
+                </label>
+                <button id="loadSaveBtn" class="big-btn big-btn-outline">📂 加载进度文件</button>
+                <input type="file" id="progressFileInput" accept=".json" style="display:none">
+            </div>
+            <p style="font-size:0.8rem;">规则：10秒内正确=掌握；超时后正确=不熟；错误/跳过=完全不会；点击释义=未掌握释义</p>
+            <footer>将 vocab.csv 放在同目录可自动加载，或手动选择文件。</footer>
+        </div>
+    </div>
+
+    <!-- 测验界面 -->
+    <div id="quizScreen" class="card hidden">
+        <div class="hero"><h1>📖 词汇测验</h1><p>逐词击破 | 计时+智能标记</p></div>
+        <div class="stats-toolbar">
+            <div class="stats">
+                <span class="stat-badge master">✅ 掌握: <span id="masterCount">0</span></span>
+                <span class="stat-badge unfamiliar">⚠️ 不熟: <span id="unfamiliarCount">0</span></span>
+                <span class="stat-badge wrong">❌ 完全不会: <span id="wrongCount">0</span></span>
+                <span class="stat-badge def">📘 未掌握释义: <span id="defCount">0</span></span>
+                <span class="stat-badge remaining">⏳ 剩余: <span id="remainingCount">0</span></span>
+            </div>
+            <div class="action-buttons">
+                <button class="small-btn" id="pauseQuizBtn">⏸️ 暂停</button>
+                <button class="small-btn" id="exportCurrentBtn">💾 保存快照</button>
+            </div>
+        </div>
+        <div class="progress-section">
+            <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="timer-area"><span>📌 进度: <span id="progressIdx">0</span> / <span id="totalItemsSpan">0</span></span>
+            <span class="timer-clock" id="timerDisplay">⏱️ 10秒</span></div>
+        </div>
+        <div class="question-panel">
+            <div class="english-word" id="currentEnglish">加载中...</div>
+            <div class="options-grid" id="optionsContainer"></div>
+            <div class="feedback-msg" id="feedbackMsg">⚡ 选择正确翻译，超时后仍可作答但仅算不熟</div>
+            <div class="nav-buttons">
+                <button id="skipBtn" class="btn-outline">⏩ 跳过(完全不会)</button>
+                <button id="unfamiliarBtn" class="btn-outline">⚠️ 标记不熟</button>
+                <button id="definitionBtn" class="btn-blue">📖 释义(记未掌握)</button>
+            </div>
+        </div>
+        <footer>失去焦点自动暂停·当前词移至末尾并重置计时</footer>
+    </div>
+
+    <!-- 结算/报告界面 -->
+    <div id="resultScreen" class="card hidden">
+        <div class="hero"><h1>📊 学习报告</h1><p>点击任意单词查看详细定义</p></div>
+        <div style="padding: 1rem; max-height: 70vh; overflow-y: auto;">
+            <div><strong>✅ 已掌握</strong> <span id="reportMasterCount">0</span></div>
+            <div id="reportMasterList" class="result-word-list"></div>
+            <div><strong>⚠️ 不熟</strong> <span id="reportUnfamiliarCount">0</span></div>
+            <div id="reportUnfamiliarList" class="result-word-list"></div>
+            <div><strong>❌ 完全不会</strong> <span id="reportWrongCount">0</span></div>
+            <div id="reportWrongList" class="result-word-list"></div>
+            <div><strong>📘 未掌握释义</strong> <span id="reportDefCount">0</span></div>
+            <div id="reportDefList" class="result-word-list"></div>
+            <div><strong>⏳ 尚未判断</strong> <span id="reportRemainingCount">0</span></div>
+            <div id="reportRemainingList" class="result-word-list"></div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin: 1rem 0;">
+                <button id="continueWeakBtn" class="big-btn">📖 复习弱项</button>
+                <button id="resultBackMenuBtn" class="big-btn big-btn-outline">🏠 返回菜单</button>
+                <button id="resultFullResetBtn" class="big-btn big-btn-outline">🔄 全新开始</button>
+                <button id="tempExitSaveBtn" class="big-btn big-btn-outline">💾 暂时退出并保存进度文件</button>
+            </div>
+        </div>
+        <footer>弱项 = 完全不会 + 未掌握释义 + 尚未判断</footer>
+    </div>
+
+    <!-- 释义弹窗 -->
+    <div id="defModal" class="modal">
+        <div class="modal-card"><h3>📖 定义解释</h3><div id="definitionText" class="def-text"></div><button id="closeDefModalBtn" class="modal-btn" style="background:#1e4a76;">关闭</button></div>
+    </div>
+    <!-- 暂停弹窗 -->
+    <div id="pauseModal" class="modal">
+        <div class="modal-card"><h3>⏸️ 测验已暂停</h3><p>当前词汇将移至末尾并重置计时。</p><button id="resumeQuizBtn" class="modal-btn" style="background:#1e4a76;">继续测验</button><button id="tempExitFromPauseBtn" class="modal-btn" style="background:#9ca3af; margin-top:8px;">暂时退出 (保存进度文件)</button></div>
+    </div>
+</div>
+
+<script>
+    // ----------------------------- 全局变量 ----------------------------
+    let MASTER_VOCAB = [];
+    let currentQueue = [];
+    let userStatus = new Map();
+    let currentIndex = 0;
+    let timerInterval = null;
+    let timeLeft = 10;
+    let isWaiting = false;
+    let isPaused = false;
+    let currentWordObj = null;
+    let alreadyTimedOut = false;
+    let isQuizActive = false;          // 是否处于测验界面且在答题环节（用于焦点检测）
+
+    // DOM 元素
+    const menuDiv = document.getElementById('menuScreen');
+    const quizDiv = document.getElementById('quizScreen');
+    const resultDiv = document.getElementById('resultScreen');
+    const startFreshBtn = document.getElementById('startFreshBtn');
+    const loadSaveBtn = document.getElementById('loadSaveBtn');
+    const progressFileInput = document.getElementById('progressFileInput');
+    const csvFileInput = document.getElementById('csvFileInput');
+    const loadErrorMsg = document.getElementById('loadErrorMsg');
+    const pauseQuizBtn = document.getElementById('pauseQuizBtn');
+    const exportCurrentBtn = document.getElementById('exportCurrentBtn');
+    const skipBtn = document.getElementById('skipBtn');
+    const unfamiliarDirectBtn = document.getElementById('unfamiliarBtn');
+    const definitionBtn = document.getElementById('definitionBtn');
+    const continueWeakBtn = document.getElementById('continueWeakBtn');
+    const resultBackMenuBtn = document.getElementById('resultBackMenuBtn');
+    const resultFullResetBtn = document.getElementById('resultFullResetBtn');
+    const tempExitSaveBtn = document.getElementById('tempExitSaveBtn');
+    const resumeQuizBtn = document.getElementById('resumeQuizBtn');
+    const tempExitFromPauseBtn = document.getElementById('tempExitFromPauseBtn');
+    const pauseModal = document.getElementById('pauseModal');
+    const defModal = document.getElementById('defModal');
+    const closeDefBtn = document.getElementById('closeDefModalBtn');
+
+    // ----------------------------- 辅助函数 ----------------------------
+    function updateStatsUI() {
+        let mastered = 0, unfamiliar = 0, wrong = 0, defUn = 0;
+        for (let s of userStatus.values()) {
+            if (s === 'mastered') mastered++;
+            else if (s === 'unfamiliar') unfamiliar++;
+            else if (s === 'wrong') wrong++;
+            else if (s === 'def_unmastered') defUn++;
+        }
+        const totalDone = mastered + unfamiliar + wrong + defUn;
+        const remaining = currentQueue.length - totalDone;
+        document.getElementById('masterCount').innerText = mastered;
+        document.getElementById('unfamiliarCount').innerText = unfamiliar;
+        document.getElementById('wrongCount').innerText = wrong;
+        document.getElementById('defCount').innerText = defUn;
+        document.getElementById('remainingCount').innerText = remaining;
+        const total = currentQueue.length;
+        const percent = total ? (currentIndex / total) * 100 : 0;
+        document.getElementById('progressFill').style.width = `${percent}%`;
+        document.getElementById('progressIdx').innerText = currentIndex;
+        document.getElementById('totalItemsSpan').innerText = total;
+    }
+
+    function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
+
+    function startTimer() {
+        if (timerInterval) stopTimer();
+        if (!isWaiting || isPaused) return;
+        alreadyTimedOut = false;
+        timeLeft = 10;
+        document.getElementById('timerDisplay').innerHTML = `⏱️ 剩余: ${timeLeft} 秒`;
+        timerInterval = setInterval(() => {
+            if (!isWaiting || isPaused) return;
+            if (timeLeft <= 1) {
+                if (!alreadyTimedOut) {
+                    alreadyTimedOut = true;
+                    document.getElementById('timerDisplay').innerHTML = '⏱️ 已超时 (仍可作答)';
+                    document.getElementById('feedbackMsg').innerHTML = '⏰ 超时！现在选择：正确→不熟，错误→完全不会';
+                }
+                if (timeLeft <= 0) return;
+                timeLeft = 0;
+                document.getElementById('timerDisplay').innerHTML = '⏱️ 已超时';
+            } else {
+                timeLeft--;
+                document.getElementById('timerDisplay').innerHTML = `⏱️ 剩余: ${timeLeft} 秒`;
+            }
+        }, 1000);
+    }
+
+    function disableOptionsAndMarkCorrect(correctChi) {
+        const btns = document.querySelectorAll('.option-btn');
+        btns.forEach(btn => {
+            btn.disabled = true;
+            if (btn.innerText === correctChi) btn.classList.add('correct-feedback');
+        });
+    }
+
+    async function recordAnswer(selectedChinese, correctChinese, vocab, wasTimeout) {
+        if (!isWaiting) return;
+        stopTimer();
+        isWaiting = false;
+        const isCorrect = (selectedChinese === correctChinese);
+        let newStatus = null;
+        if (isCorrect) {
+            newStatus = wasTimeout ? 'unfamiliar' : 'mastered';
+        } else {
+            newStatus = 'wrong';
+        }
+        userStatus.set(vocab.english, newStatus);
+        updateStatsUI();
+        let msg = isCorrect ? (wasTimeout ? '⚠️ 超时后正确 → 标记【不熟】' : '✅ 正确 → 【掌握】') : '❌ 错误 → 【完全不会】';
+        document.getElementById('feedbackMsg').innerHTML = msg + ` 正确答案：${correctChinese}`;
+        disableOptionsAndMarkCorrect(correctChinese);
+        setTimeout(() => { moveToNext(); }, 800);
+    }
+
+    function markAsUnfamiliarDirect() {
+        if (!isWaiting) return;
+        stopTimer();
+        isWaiting = false;
+        userStatus.set(currentWordObj.english, 'unfamiliar');
+        updateStatsUI();
+        document.getElementById('feedbackMsg').innerHTML = `⚠️ 标记为【不熟】`;
+        disableOptionsAndMarkCorrect(currentWordObj.chinese);
+        setTimeout(() => moveToNext(), 800);
+    }
+
+    function markAsWrongSkip() {
+        if (!isWaiting) return;
+        stopTimer();
+        isWaiting = false;
+        userStatus.set(currentWordObj.english, 'wrong');
+        updateStatsUI();
+        document.getElementById('feedbackMsg').innerHTML = `⏩ 跳过 → 【完全不会】`;
+        disableOptionsAndMarkCorrect(currentWordObj.chinese);
+        setTimeout(() => moveToNext(), 800);
+    }
+
+    function showDefinitionAndMark() {
+        if (!isWaiting) return;
+        const vocab = currentWordObj;
+        document.getElementById('definitionText').innerHTML = vocab.definition;
+        defModal.style.display = 'flex';
+        const closeHandler = () => {
+            defModal.style.display = 'none';
+            if (isWaiting && currentWordObj === vocab) {
+                stopTimer();
+                isWaiting = false;
+                userStatus.set(vocab.english, 'def_unmastered');
+                updateStatsUI();
+                document.getElementById('feedbackMsg').innerHTML = `📖 查看释义 → 标记【未掌握释义】`;
+                disableOptionsAndMarkCorrect(vocab.chinese);
+                setTimeout(() => moveToNext(), 800);
+            }
+            closeDefBtn.removeEventListener('click', closeHandler);
+        };
+        closeDefBtn.addEventListener('click', closeHandler, { once: true });
+    }
+
+    function getRandomDistractors(correctChinese, currentEng) {
+        let candidates = MASTER_VOCAB.filter(v => v.chinese !== correctChinese && v.english.toLowerCase() !== currentEng.toLowerCase()).map(v => v.chinese);
+        let uniq = [...new Set(candidates)];
+        if (uniq.length < 3) uniq.push("资产负债表", "利润表", "所有者权益");
+        for (let i = uniq.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [uniq[i], uniq[j]] = [uniq[j], uniq[i]];
+        }
+        return uniq.slice(0, 3);
+    }
+
+    function renderCurrent() {
+        if (isPaused) return;
+        if (currentIndex >= currentQueue.length) {
+            finishQuizAndShowResult(false);
+            return;
+        }
+        const item = currentQueue[currentIndex];
+        currentWordObj = item;
+        document.getElementById('currentEnglish').innerText = item.english;
+        const correct = item.chinese;
+        const opts = [correct, ...getRandomDistractors(correct, item.english)];
+        for (let i = opts.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [opts[i], opts[j]] = [opts[j], opts[i]];
+        }
+        const container = document.getElementById('optionsContainer');
+        container.innerHTML = '';
+        opts.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.addEventListener('click', () => { if (isWaiting) recordAnswer(opt, correct, item, alreadyTimedOut); });
+            container.appendChild(btn);
+        });
+        isWaiting = true;
+        alreadyTimedOut = false;
+        startTimer();
+        document.getElementById('feedbackMsg').innerHTML = '⏳ 选择正确答案 (超时后仍可作答)';
+        updateStatsUI();
+    }
+
+    function moveToNext() {
+        if (isPaused) return;
+        currentIndex++;
+        if (currentIndex < currentQueue.length) renderCurrent();
+        else finishQuizAndShowResult(false);
+    }
+
+    function finishQuizAndShowResult(isTempExit) {
+        stopTimer();
+        isWaiting = false;
+        const mastered = [], unfamiliar = [], wrong = [], defUn = [], remaining = [];
+        for (let w of currentQueue) {
+            const s = userStatus.get(w.english);
+            if (s === 'mastered') mastered.push(w);
+            else if (s === 'unfamiliar') unfamiliar.push(w);
+            else if (s === 'wrong') wrong.push(w);
+            else if (s === 'def_unmastered') defUn.push(w);
+            else remaining.push(w);
+        }
+        const renderList = (arr, containerId, countId) => {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            arr.forEach(w => {
+                const div = document.createElement('div');
+                div.className = 'word-clickable';
+                div.innerText = `${w.english} —— ${w.chinese}`;
+                div.addEventListener('click', () => {
+                    document.getElementById('definitionText').innerHTML = w.definition;
+                    defModal.style.display = 'flex';
+                });
+                container.appendChild(div);
+            });
+            document.getElementById(countId).innerText = arr.length;
+        };
+        renderList(mastered, 'reportMasterList', 'reportMasterCount');
+        renderList(unfamiliar, 'reportUnfamiliarList', 'reportUnfamiliarCount');
+        renderList(wrong, 'reportWrongList', 'reportWrongCount');
+        renderList(defUn, 'reportDefList', 'reportDefCount');
+        renderList(remaining, 'reportRemainingList', 'reportRemainingCount');
+        quizDiv.classList.add('hidden');
+        resultDiv.classList.remove('hidden');
+        menuDiv.classList.add('hidden');
+        isQuizActive = false;   // 退出测验界面
+    }
+
+    function downloadStateAsFile() {
+        const state = {
+            queue: currentQueue,
+            statusMap: Array.from(userStatus.entries()),
+            currentIndex: currentIndex
+        };
+        const dataStr = JSON.stringify(state, null, 2);
+        const blob = new Blob([dataStr], { type: 'application/json' });
+        const a = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        a.href = url;
+        a.download = `accounting_progress_${new Date().toISOString().slice(0,19)}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    // 解析CSV并初始化
+    function loadVocabFromCSVContent(csvText) {
+        const lines = csvText.split(/\r?\n/);
+        const vocab = [];
+        let firstLine = true;
+        for (let line of lines) {
+            line = line.trim();
+            if (!line) continue;
+            if (firstLine) {
+                firstLine = false;
+                continue;
+            }
+            const parts = line.split(',').map(s => s.trim());
+            if (parts.length < 3) continue;
+            const english = parts[0];
+            const chinese = parts[1];
+            const definition = parts.slice(2).join(',');
+            vocab.push({ english, chinese, definition: definition || `《${english}》的会计定义` });
+        }
+        if (vocab.length === 0) throw new Error('CSV无有效数据');
+        return vocab;
+    }
+
+    function startWithVocab(vocabArray) {
+        MASTER_VOCAB = vocabArray;
+        currentQueue = [...MASTER_VOCAB];
+        for (let i = currentQueue.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [currentQueue[i], currentQueue[j]] = [currentQueue[j], currentQueue[i]];
+        }
+        userStatus.clear();
+        currentIndex = 0;
+        isPaused = false;
+        isWaiting = false;
+        stopTimer();
+        renderCurrent();
+        updateStatsUI();
+        quizDiv.classList.remove('hidden');
+        menuDiv.classList.add('hidden');
+        resultDiv.classList.add('hidden');
+        startFreshBtn.disabled = false;
+        isQuizActive = true;   // 进入测验界面，开启焦点检测
+    }
+
+    async function attemptAutoLoad() {
+        try {
+            const response = await fetch('vocab.csv');
+            if (!response.ok) throw new Error('HTTP error');
+            const csvText = await response.text();
+            const vocab = loadVocabFromCSVContent(csvText);
+            startWithVocab(vocab);
+            loadErrorMsg.classList.add('hidden');
+            return true;
+        } catch (err) {
+            console.warn('自动加载失败', err);
+            loadErrorMsg.classList.remove('hidden');
+            startFreshBtn.disabled = true;
+            return false;
+        }
+    }
+
+    function handleManualCSV(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const vocab = loadVocabFromCSVContent(e.target.result);
+                startWithVocab(vocab);
+                loadErrorMsg.classList.add('hidden');
+            } catch (err) {
+                alert('CSV解析失败：' + err.message);
+            }
+        };
+        reader.readAsText(file, 'UTF-8');
+    }
+
+    function loadProgressFromFile(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const data = JSON.parse(e.target.result);
+                currentQueue = data.queue;
+                userStatus = new Map(data.statusMap);
+                currentIndex = data.currentIndex;
+                isPaused = false;
+                stopTimer();
+                renderCurrent();
+                updateStatsUI();
+                quizDiv.classList.remove('hidden');
+                menuDiv.classList.add('hidden');
+                resultDiv.classList.add('hidden');
+                startFreshBtn.disabled = false;
+                isQuizActive = true;
+            } catch (err) { alert('进度文件解析失败'); }
+        };
+        reader.readAsText(file);
+    }
+
+    function continueWeak() {
+        const weakList = [];
+        for (let w of currentQueue) {
+            const s = userStatus.get(w.english);
+            if (s === 'wrong' || s === 'def_unmastered' || !s) weakList.push(w);
+        }
+        if (weakList.length === 0) { alert('暂无弱项，恭喜！'); return; }
+        currentQueue = weakList;
+        userStatus.clear();
+        currentIndex = 0;
+        renderCurrent();
+        updateStatsUI();
+        quizDiv.classList.remove('hidden');
+        menuDiv.classList.add('hidden');
+        resultDiv.classList.add('hidden');
+        isQuizActive = true;
+    }
+
+    // 暂停逻辑 & 暂时退出（进入结算页面）
+    function showPause() {
+        if (isWaiting && !isPaused && isQuizActive) {
+            stopTimer();
+            isPaused = true;
+            pauseModal.style.display = 'flex';
+        }
+    }
+    function resumeFromPause() {
+        pauseModal.style.display = 'none';
+        if (isPaused) {
+            if (currentWordObj && currentIndex < currentQueue.length) {
+                const moved = currentQueue.splice(currentIndex, 1);
+                currentQueue.push(moved[0]);
+                if (currentIndex >= currentQueue.length) currentIndex = currentQueue.length - 1;
+                if (currentIndex === currentQueue.length) currentIndex = 0;
+            }
+            isPaused = false;
+            renderCurrent();
+        }
+    }
+    // 暂时退出：保存文件 + 显示结算报告
+    function tempExitToResult() {
+        // 保存进度文件
+        downloadStateAsFile();
+        // 显示结算界面，但不退出到菜单
+        if (isPaused) {
+            pauseModal.style.display = 'none';
+            isPaused = false;
+        }
+        stopTimer();
+        isWaiting = false;
+        // 直接调用展示结果（不结束队列，但展示当前报告）
+        finishQuizAndShowResult(true);
+        // 确保暂停状态被清除
+        isQuizActive = false;
+    }
+
+    // 事件绑定
+    window.addEventListener('blur', () => { if (isQuizActive && isWaiting && !isPaused && !quizDiv.classList.contains('hidden')) showPause(); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden && isQuizActive && isWaiting && !isPaused && !quizDiv.classList.contains('hidden')) showPause(); });
+
+    startFreshBtn.onclick = () => { if (MASTER_VOCAB.length) startWithVocab(MASTER_VOCAB); else alert('请先加载词汇表'); };
+    loadSaveBtn.onclick = () => progressFileInput.click();
+    progressFileInput.onchange = (e) => { if (e.target.files.length) loadProgressFromFile(e.target.files[0]); e.target.value = ''; };
+    csvFileInput.onchange = (e) => { if (e.target.files.length) handleManualCSV(e.target.files[0]); e.target.value = ''; };
+    pauseQuizBtn.onclick = () => showPause();
+    exportCurrentBtn.onclick = () => downloadStateAsFile();
+    skipBtn.onclick = () => { if (isWaiting && !isPaused && isQuizActive) markAsWrongSkip(); };
+    unfamiliarDirectBtn.onclick = () => { if (isWaiting && !isPaused && isQuizActive) markAsUnfamiliarDirect(); };
+    definitionBtn.onclick = () => { if (isWaiting && !isPaused && isQuizActive) showDefinitionAndMark(); };
+    continueWeakBtn.onclick = () => continueWeak();
+    resultBackMenuBtn.onclick = () => { resultDiv.classList.add('hidden'); menuDiv.classList.remove('hidden'); isQuizActive = false; };
+    resultFullResetBtn.onclick = () => { if (MASTER_VOCAB.length) startWithVocab(MASTER_VOCAB); else alert('请先加载词汇表'); };
+    tempExitSaveBtn.onclick = () => tempExitToResult();          // 结果界面中的暂时退出
+    resumeQuizBtn.onclick = () => resumeFromPause();
+    tempExitFromPauseBtn.onclick = () => tempExitToResult();     // 暂停弹窗中的暂时退出
+    closeDefBtn.onclick = () => defModal.style.display = 'none';
+
+    // 初始化：尝试自动加载
+    attemptAutoLoad();
+</script>
+</body>
+</html>
