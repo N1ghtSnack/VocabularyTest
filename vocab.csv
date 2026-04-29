@@ -1,0 +1,268 @@
+英文,中文,定义
+entity,实体,会计主体：拥有或控制经济资源并能独立进行会计核算的单位。
+stockholder,股东,持有公司股份的所有者，享有剩余权益和投票权。
+shareholder,股东,与stockholder同义，指持有公司股票的投资者。
+creditor,债权人,向企业提供资金或商品并有权要求偿还的个体或机构。
+periodic,周期性的,指按固定时间间隔（如月、季、年）进行会计报告的特性。
+balance sheet,资产负债表,反映企业在特定时点资产、负债和所有者权益财务状况的报表。
+income statement,利润表,反映企业在一定会计期间经营成果的报表，即收入减费用等于净利润。
+statement of stockholders' equity,所有者权益变动表,报告一定期间内所有者权益各组成部分（如普通股、留存收益）变动的报表。
+statement of cash flows,现金流量表,报告企业一定期间内经营、投资和筹资活动现金流入流出情况的报表。
+liabilities,负债,企业过去的交易形成的现时义务，预期会导致经济利益流出企业。
+Accounts Receivable,应收账款,因销售商品或提供服务而应收但尚未收到的客户款项。
+Notes Receivable,应收票据,企业持有的、由债务人签发的书面承诺付款的债权凭证。
+Inventories,存货,企业持有待售的产成品、在产品以及生产中使用的原材料和物料。
+Supplies,物料,企业持有的用于日常运营的低值易耗品，如办公用品、清洁用品等。
+Prepaid Expenses,预付费用,企业预先支付但尚未消耗的费用，属于资产。
+Intangibles,无形资产,无实物形态但具有价值的非货币性资产，如专利、商标、商誉。
+Accounts Payable,应付账款,因采购商品或服务而应付给供应商的短期债务。
+Accrued Expenses,应计费用,已发生但尚未支付现金的费用，如应付工资、应付利息。
+Notes Payable,应付票据,企业签发的书面承诺在未来特定日期支付一定金额的债务凭证。
+Taxes Payable,应交税金,企业根据税法规定应缴纳但尚未支付的各项税费。
+Unearned Revenue,预收账款,企业已收款但尚未履行履约义务（未交付商品或服务），属于负债。
+Bonds Payable,应付债券,企业为筹集长期资金而发行的、约定在一定期限内还本付息的证券。
+Common Stock,普通股,代表所有者权益的基本股份，持有者享有投票权和剩余权益。
+Retained Earnings,留存收益,企业累计盈利中未作为股利分配给股东的部分，用于再投资或偿债。
+financing,融资,企业通过债务或权益方式筹集资金的活动。
+owe,欠,负有偿还债务的义务。
+cushion,垫子（缓冲）,在会计中指所有者权益对债权人形成的保护，即资产清偿负债后的剩余。
+revenue,收入,企业在日常活动中形成的、导致所有者权益增加的经济利益总流入。
+Cost of Goods Sold,营业成本,与已销售产品或服务直接相关的生产成本或采购成本。
+wages,工资支出,企业支付给员工的薪酬，属于营业费用。
+rent,租金支出,企业为使用租赁资产而支付的费用。
+depreciation,折旧,将固定资产的成本在其使用寿命内系统合理地分摊的过程。
+insurance,保险,企业为规避风险而支付给保险公司的费用。
+Income Tax Expense,所得税,企业根据应纳税所得额计算的应缴纳给政府的税款。
+Selling, General and Administrative Expenses,销售、行政及一般开支,企业为销售和日常管理发生的期间费用，如广告费、管理人员工资。
+loan,贷款,企业从银行或其他金融机构借入的资金。
+issuance,发行,企业向投资者出售证券（如股票、债券）的行为。
+dividend,股利,公司将其部分利润分配给股东的方式。
+integral,整体的,指财务报表附注是报表不可分割的一部分。
+maturity,到期,债务或金融工具应偿还的日期。
+position,头寸,企业在金融市场中持有的某种资产或负债的净额。
+Generally Accepted Accounting Principles,一般公认会计准则,美国公认会计原则，指导财务报告编制的规则体系。
+Securities and Exchange Commission,证券交易委员会,美国联邦政府机构，负责监管证券市场和保护投资者。
+Financial Accounting Standard Board,财务会计准则委员会,美国制定和发布会计准则的独立机构。
+conceptual framework,概念框架,为制定会计准则提供理论基础的体系，包括目标、假设和原则。
+faithful representation,如实反映,会计信息应真实、完整地反映经济实质，不偏不倚。
+timely,及时的,会计信息应在失去决策有用性之前提供给使用者。
+verifiable,可验证的,独立第三方使用相同方法能得出基本相同的结果。
+comparable,可比的,不同企业之间的会计信息应能相互比较。
+understandable,可理解的,会计信息应清晰明了，便于使用者理解。
+debate,辩论,会计准则制定过程中利益相关方就规则进行的讨论。
+lobby,游说,利益集团试图影响会计准则制定决策的行为。
+compromise,妥协,会计准则制定中各方利益调和后达成的最终规则。
+International Financial Reporting Standards,国际财务报告准则,国际会计准则理事会发布的全球性会计准则。
+International Accounting Standards Board,国际会计准则理事会,制定国际财务报告准则的独立机构。
+Accounting Cycle,会计周期,从交易分析、记录到编制财务报表和关账的完整会计处理过程。
+Accrued Expenses Payable,应计未付费用,已发生但尚未支付现金的负债，如应付水电费、应付利息。
+Accumulated Depreciation,累计折旧,固定资产自使用以来累计计提的折旧总额，是资产的备抵账户。
+Additional Paid-in Capital,资本公积,股东实际出资超过股票面值的部分，属于所有者权益。
+Advertising Expense,广告费用,企业为推广产品或服务而发生的广告支出。
+Agency Conflicts,代理冲突,股东与管理层或债权人之间因利益不一致而产生的冲突。
+Alleviate,缓解,采取行动降低或消除某种负面效应。
+Assess,评估,对企业财务状况、经营成果进行分析和判断。
+Asset,资产,企业拥有或控制的、由过去交易形成、预期能带来未来经济利益的资源。
+Assumption,假设,会计基本前提，如会计主体、持续经营、会计分期、货币计量。
+Beverage,饮料,指企业销售的产品类别，在存货中体现。
+Bonds,债券,企业或政府发行的债务证券，承诺按固定利率付息并到期还本。
+Cash,现金,企业持有的货币资金，包括库存现金和银行存款。
+Chart of Accounts,会计科目表,企业为分类记录交易而制定的所有账户名称和编号的清单。
+Chronological,按时间顺序的,会计分录按照交易发生的时间先后顺序排列。
+Coevolves,共同进化,会计制度与支持性社会制度（如法律、语言）同步发展演进。
+Contributed Capital,实缴资本,股东投入企业的资本总额，包括普通股和资本公积。
+Copyrights,著作权,对文学、艺术、音乐作品的独占出版、使用和销售权。
+Credit,贷记,会计中记录负债、所有者权益或收入增加，或资产、费用减少的记账符号。
+Criterion,准则,用于判断或决策的标准或原则。
+Current assets,流动资产,预计在一个营业周期或一年内变现、出售或耗用的资产。
+Current Lease Liabilities,流动租赁负债,一年内需要支付的租赁负债部分。
+Current Ratio,流动比率,流动资产除以流动负债，衡量短期偿债能力。
+Debit,借记,会计中记录资产、费用增加，或负债、所有者权益、收入减少的记账符号。
+Debit Balance,借方余额,账户中借方总额大于贷方总额时形成的余额，常见于资产和费用账户。
+Debt Covenant,债务契约,借款合同中规定借款人必须遵守的条款，如保持最低流动比率。
+Declare,宣告,公司董事会正式决定支付股利的公告行为。
+Depreciation Expense,折旧费,当期计提的固定资产折旧额，计入费用。
+Distinguish,区分,识别不同会计要素或项目的本质差异。
+Distribution,分配,企业将利润以股利形式分给股东的行为。
+Dual Effects,双重作用,每笔交易至少影响会计等式中的两个账户，保持等式平衡。
+EBITDA,税息折旧及摊销前利润,未计利息、税项、折旧及摊销前的利润，用于衡量经营盈利能力。
+Economic entity assumption,会计主体假设,企业作为一个独立的核算单位，与其所有者的个人事务分开。
+Economic Impact,经济影响,交易或事项对企业财务状况和经营成果的作用。
+Economic resources,经济资源,企业拥有或控制的、能带来未来经济利益的资产。
+Element,要素,财务报表的基本构成项目，如资产、负债、所有者权益、收入、费用。
+Fair Value,公允价值,在有序交易中，市场参与者之间出售资产或转移负债的价格。
+General Journal,日记账,按时间顺序记录所有交易的会计账簿。
+General Ledger,总分类账,按账户汇总记录所有交易过账后的会计账簿。
+Going Concern Assumption,持续经营假设,假设企业将在可预见的未来继续经营，不会破产清算。
+Historical Cost,历史成本,资产按购入时支付的对价入账的计量属性。
+Hypothetical,假设的,基于理论或设想的场景，而非实际交易。
+Interest Expense,利息支出,企业为借入资金而支付的费用。
+Interest Revenue,利息收入,企业通过贷款或投资债券获得的利息收益。
+Issue,发行,企业向投资者出售新证券以筹集资金。
+Journal Entry,会计分录,记录交易对账户影响的记账形式，借方总额等于贷方总额。
+Journalize,记入会计账册,将交易编写成会计分录并登记到日记账中。
+License,许可证,允许企业使用特定技术、品牌或经营模式的授权。
+Liquidity,流动性,资产快速变现而不受重大损失的能力，或企业偿付短期债务的能力。
+Measurement,计量,确定会计要素金额的会计过程。
+Money measurement assumption,货币计量假设,会计只记录可以用货币计量的经济事项。
+Net Income,净利润,收入总额减去费用总额后的最终经营成果。
+Noncurrent Assets,非流动资产,预计持有超过一年的资产，如固定资产、无形资产。
+Obligation,义务,由过去交易形成的、需要在未来转移资产或提供服务的现时责任。
+Off-balance-sheet Financing,表外融资,不体现在资产负债表的融资安排，如某些短期租赁。
+Operating Lease Right-of-use Assets,经营租赁使用权资产,承租人根据经营租赁合同获得的在租赁期内使用资产的权利。
+Par Value,面值,股票证书上标明的每股名义价值，通常很低。
+Property and Equipment,不动产和设备,企业用于生产或管理的长期有形资产，如土地、建筑、机器。
+Quick Ratio,速动比率,（流动资产减存货）除流动负债，更严格的短期偿债能力指标。
+Recognition,确认,将符合要素定义和计量标准的项目记入财务报表的过程。
+Relevant,相关,会计信息能够影响使用者决策。
+Reliable,可靠,会计信息真实、可验证、不偏不倚。
+Rent Revenue,租赁收入,企业出租资产而获得的租金。
+Repair Expense,维修费,为维护固定资产正常运转而发生的支出。
+Residual Interest,剩余权益,资产减去负债后的剩余部分，即所有者权益。
+Sales Revenue,销售收入,销售商品或提供服务所获得的收入。
+Service Revenue,服务收入,提供劳务服务获得的收入。
+Short-Term Investments,短期投资,持有期不超过一年的金融资产，如交易性证券。
+Subtract,扣除,在计算中减掉某个项目。
+Supplier,供应商,向企业提供原材料、商品或服务的外部单位。
+T-account,T型账户,用于分析单个账户增减变化的简化的账户格式。
+Time Period Assumption,会计分期假设,将企业持续经营划分为相等的会计期间进行报告。
+Track,跟踪,记录并监控交易或账户余额的变化。
+Trademark,商标,用于识别产品或服务的名称、标识或形象。
+Transaction,交易,企业与外部单位或个人之间发生的、影响会计等式的经济事项。
+Treasury Stock,库存股,公司回购自身已发行股票但尚未注销的股份，是所有者权益的备抵账户。
+Trial Balance,试算平衡表,列示所有总账账户余额的报表，用于检查借方总额是否等于贷方总额。
+Utilities Payable,应付水电费,已使用但尚未支付的水、电、燃气等费用的负债。
+Wage Payable,应付职工薪酬,应付给员工的工资和薪金，属于流动负债。
+Wages Expense,工资支出,当期发生的员工工资费用。
+Item,项目,财务报表中的单个科目或披露事项。
+Illiquid,非流动的,不易快速变现的资产或距离到期日较长的负债。
+Ongoing,持续的,指企业的主要日常经营活动。
+Peripheral,次要的,与核心经营活动无关的边缘交易或事项。
+Client,委托人,接受服务的企业或个人，如审计客户。
+Operating Revenues,营业收入,企业核心经营活动中产生的收入。
+Incurred,发生的,指费用已经产生，无论是否支付现金。
+Earnings per share (EPS),每股收益,净利润除以流通在外普通股加权平均数，反映每股盈利水平。
+Cash Basis Accounting,收付实现制会计,以现金实际收付确认收入和费用的会计基础。
+Sole Proprietor,独资经营,单一所有者独自承担无限责任的企业形式。
+Partnership,合伙,两个或以上所有者共同经营、共同承担无限责任的企业形式。
+Accrual Basis Accounting,权责发生制会计,以权利和责任的发生确认收入和费用，不论现金收付。
+Matching Principle,配比原则,将费用与产生该费用的收入在同一期间确认。
+Paid-in Capital,实收资本,股东投入企业的资本总额。
+Disposal of Assets,资产处置,出售、报废或退出使用的长期资产。
+Unadjusted,未调整的,尚未经过期末调整分录的账户余额。
+Net Profit Margin Ratio,净利润率,净利润除以营业收入，衡量每元销售产生的净利润。
+Adjustments,调整,期末为将收入和费用归入正确期间而编制的分录。
+Turnover Ratio,周转率,衡量资产（如存货、应收账款、总资产）使用效率的指标。
+Disseminate,发布,将财务信息分发给使用者。
+Deferral,递延,现金收付与收入费用确认在不同期间的处理方法。
+Accrual,应计,在未收付现时即确认收入或费用的会计原则。
+Postponed,延期,将收入确认推迟到以后期间。
+Redeem,兑换、履行,客户使用礼品卡或预付凭证换取商品或服务。
+Accrued Revenues,应计收入,已赚取但尚未收到现金的收入，属于资产。
+Contra-asset Account,资产的备抵账户,用于抵减相关资产账户余额的账户，如累计折旧。
+Net Book Value,净账面价值,资产原值减去累计折旧或摊销后的余额。
+Manipulate,操纵,故意歪曲会计数据以达到某种目的。
+Allegation,指控,对财务造假行为的正式指控。
+Permanent,永久的,资产负债表账户，其余额结转至下一期。
+Temporary,暂时性的,损益表和股利账户，期末结平。
+Consolidate,合并,将母子公司财务报表合并为一个整体报告。
+Closing Process,关账过程,将临时账户余额转入留存收益并为下一期作准备的步骤。
+Bad Debts,坏账,无法收回的应收账款，确认为损失。
+Receivables Turnover Ratio,应收账款周转率,赊销净额除以平均应收账款，衡量收账效率。
+Safeguard,保障,为保护资产安全而采取的控制措施。
+Title,所有权,对资产拥有法定权利。
+Free On Board,船上交货条款,FOB，指定货物所有权转移的时点。
+Consolidated,合并的,包含子公司财务数据的整体报表。
+Circumstance,情况,影响会计估计和判断的环境因素。
+Fraudulent,欺诈的,故意欺骗财务报表使用者的行为。
+Promissory,应允的、承付的,指作出承诺，如本票。
+Prompt,迅速的、及时的,指快速支付或反馈。
+Sales Returns and Allowances,销售退回与折让,客户退货或价格折让，是收入的备抵账户。
+Contra-Revenue,抵销收入,用于减少总收入以得出净收入的账户，如销售折扣。
+Royalty,版税、特许权使用费,使用他人知识产权支付的费用。
+Principal,本金,借款的初始金额，不含利息。
+Denominate,以（某货币）为单位,以某种货币表示金额。
+Subsidiary Account,明细账户,总账账户下的详细记录客户或项目的账户。
+Allowance Method,备抵法,通过估计坏账比例来确认坏账费用的方法。
+Deduction,扣除、减项,从总额中减去的部分。
+Aging Method,账龄法,根据应收账款账龄估计坏账的方法。
+Write Off,核销,确认特定应收账款无法收回并冲销该账户。
+Cash Equivalent,现金等价物,期限短、流动性强的短期投资，易于转换为已知金额现金。
+Treasury Bills,国库券,短期政府债券，常作为现金等价物。
+Idle,闲置的、空闲的,指未使用的资金或资产。
+Cash Disbursement,现金支出,公司支付的现金。
+Prescribed,规定的、指定的,会计准则或政策要求的程序。
+Reconciliation,对账,比较银行余额与企业账面余额并调整差异的过程。
+Felon,重罪犯,指犯有严重罪行的人，在财务舞弊中提及。
+Outstanding Check,未兑付支票,已开出但尚未被收款人兑现的支票。
+Cost Principle,成本原则,资产按取得时的实际成本入账。
+Obsolescence,过时、陈旧,因技术进步或需求变化导致资产价值下降。
+Marketable Securities,流通证券、可转让证券,可在市场上快速出售的股票或债券。
+Merchandise Inventory,商品库存,零售商或批发商持有的待售商品。
+Raw Material,原材料,用于生产产品的初始物料。
+Work In Process,在产品,已投入生产但尚未完工的产品。
+Finished Goods,产成品,已完成生产但尚未出售的产品。
+Salable,可销售的,符合销售条件的商品。
+Invoice Price,发票价格,供应商开具的发票上列明的价格。
+Freight-In,进货运费,购进货物支付的运输费用，计入存货成本。
+Materiality Constraint,重要性约束,会计信息允许一定程度的简化，只要不影响决策。
+Factory Overhead,制造费用,与生产相关但不直接计入产品的间接费用。
+Perpetual,永久的,永续盘存制，每次交易后更新存货记录。
+Up-to-date,最新的、当日记账,保持实时更新。
+Specific Identification,个别计价法,按每件商品的实际成本结转存货的方法。
+First-In First-Out,先进先出法,假设先购入的商品先发出，期末存货为最近购入成本。
+Cost Flow Assumptions,成本流假设,FIFO、LIFO、平均成本等假设，用于分配存货成本。
+Lower of Cost or Net Realizable Value,成本与可变现净值孰低,存货应按成本与可变现净值中较低者计量。
+Holding Loss,持有损失,存货可变现净值下降导致的减值损失。
+Clerical Error,笔误,因输入错误造成的会计差错。
+Fixture,家具、固定装饰,可固定在建筑物上的设备，属于固定资产。
+Patent,专利,政府授予的20年独占权，用于保护发明创造。
+Copyright,版权,对原创作品的独占出版和使用权。
+Franchises,特许经营权,授权使用商标和经营模式的合同权利。
+Goodwill,商誉,企业合并中支付对价超过被购买方可辨认净资产公允价值的部分。
+Physical Substance,物理实体,有形资产的特征，无形资产不具备。
+Trailers,拖车,运输设备，属于固定资产。
+Confer,授予,通过法律或合同赋予权利。
+Capitalize,资本化,将支出确认为资产而非费用。
+Expense,费用化,将支出立即确认为当期费用。
+Declining Balance Method,余额递减法,一种加速折旧方法，每期按账面余额乘以固定比率。
+Accelerated Depreciation Method,加速折旧法,早期多提、后期少提折旧的方法，如双倍余额递减法。
+Iron Ore,铁矿,自然资源，开采后计入存货。
+Timber Tracts,大片木材,林地资源，属于自然资源。
+Depletion,损耗,将自然资源成本在开采期内分配的过程。
+Contingent Liabilities,或有负债,由过去事项形成的潜在义务，其存在需由未来不确定事项发生与否证实。
+Working Capital,营运资金,流动资产减流动负债，反映短期财务健康度。
+Present Value,现值,未来现金流量按特定折现率折算成的当前价值。
+Bankruptcy,破产,企业无力偿还债务时法律宣布的清算或重组状态。
+Pay Off Function,收益函数,博弈论中指基于报告和平均数的收益规则。
+Sacrifice,牺牲,为了达成目标而放弃的资源。
+Payroll,工资总支出,企业支付的员工薪酬总额。
+Federal Taxes,联邦税,美国联邦政府征收的税收。
+Retirement Programs,退休计划,企业为员工提供的养老金计划。
+Vacation Time,休假时间,员工应享有的带薪假期。
+Health Insurance,健康保险,企业为员工提供的医疗保险福利。
+Withheld,扣留,从员工工资中扣除并代缴的税款或保费。
+Repayment Date,还款日期,贷款需要偿还的日期。
+Maturity Date,到期日,债务应全额偿还的日期。
+Footnote,脚注,财务报表附注，提供补充说明。
+Refinance,再融资,借新债偿还旧债的行为。
+Inherently,固有的,某种性质内在固有的。
+Subjective,主观的,依赖估计和判断，而非客观事实。
+Pledge,抵押,为借款提供资产担保。
+Secured Debt,担保债务,有特定资产作为担保的债务。
+Unsecured Debt,无担保债务,无资产抵押、仅凭借款人信誉的债务。
+Integrity,诚信,会计专业人员应保持的诚实和正直品质。
+Pension Plans,养老金计划,企业为员工退休后提供收入的安排。
+Lessen,减少,降低风险或成本。
+Exchange Rate Risk,汇率风险,因汇率变动导致的损失风险。
+Mitigate,减轻,采取措施降低风险的严重性。
+Convert,转换,将债务转换为股权或其他形式。
+Lease Liability,租赁负债,承租人因租赁合同而承担的支付租金义务的现值。
+Finance Leases,融资租赁,实质上转移了资产所有权相关风险和报酬的租赁。
+Operating Leases,经营租赁,不转移所有权相关风险和报酬的租赁，短期租赁常见。
+Contractual Agreement,合同协议,约定双方权利和义务的法律文件。
+Leasee,承租人,支付租金以使用他人资产的实体。
+Criteria,标准,用于判断和决策的依据。
+Deposit,存款,存入银行或作为保证金的资金。
+Annuity,年金,间隔期相等的系列等额收付款项。
+Consecutive,连续的,指时间上不间断的序列。
