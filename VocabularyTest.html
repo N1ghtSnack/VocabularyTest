@@ -307,6 +307,9 @@
                 ⚠️ 未找到 vocab.csv 文件或加载失败。<br>
                 请手动选择词汇表文件（CSV格式，表头：英文,中文,定义）
             </div>
+            <div id="loadSuccessMsg" class="error-box" style="background:#d1fae5; color:#065f46; display:none;">
+                ✅ 词汇表加载成功！点击「全新开始」进行测验。
+            </div>
             <div class="menu-buttons">
                 <button id="startFreshBtn" class="big-btn" disabled>✨ 全新开始</button>
                 <label class="file-input-label" id="manualLoadLabel">📂 选择CSV词汇表
@@ -411,6 +414,7 @@
     const progressFileInput = document.getElementById('progressFileInput');
     const csvFileInput = document.getElementById('csvFileInput');
     const loadErrorMsg = document.getElementById('loadErrorMsg');
+    const loadSuccessMsg = document.getElementById('loadSuccessMsg');
     const pauseQuizBtn = document.getElementById('pauseQuizBtn');
     const exportCurrentBtn = document.getElementById('exportCurrentBtn');
     const skipBtn = document.getElementById('skipBtn');
@@ -629,7 +633,7 @@
         quizDiv.classList.add('hidden');
         resultDiv.classList.remove('hidden');
         menuDiv.classList.add('hidden');
-        isQuizActive = false;   // 退出测验界面
+        isQuizActive = false;
     }
 
     function downloadStateAsFile() {
@@ -648,7 +652,7 @@
         URL.revokeObjectURL(url);
     }
 
-    // 解析CSV并初始化
+    // 解析CSV并存储到 MASTER_VOCAB，但不自动开始测验
     function loadVocabFromCSVContent(csvText) {
         const lines = csvText.split(/\r?\n/);
         const vocab = [];
@@ -671,8 +675,19 @@
         return vocab;
     }
 
-    function startWithVocab(vocabArray) {
+    function setVocabularyReady(vocabArray) {
         MASTER_VOCAB = vocabArray;
+        startFreshBtn.disabled = false;
+        loadErrorMsg.classList.add('hidden');
+        loadSuccessMsg.style.display = 'block';
+        loadSuccessMsg.innerText = `✅ 词汇表加载成功！共 ${MASTER_VOCAB.length} 个词汇。点击「全新开始」进行测验。`;
+    }
+
+    function startNewQuiz() {
+        if (MASTER_VOCAB.length === 0) {
+            alert('请先加载词汇表（手动选择CSV或等待自动加载）');
+            return;
+        }
         currentQueue = [...MASTER_VOCAB];
         for (let i = currentQueue.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
@@ -688,39 +703,7 @@
         quizDiv.classList.remove('hidden');
         menuDiv.classList.add('hidden');
         resultDiv.classList.add('hidden');
-        startFreshBtn.disabled = false;
-        isQuizActive = true;   // 进入测验界面，开启焦点检测
-    }
-
-    async function attemptAutoLoad() {
-        try {
-            const response = await fetch('vocab.csv');
-            if (!response.ok) throw new Error('HTTP error');
-            const csvText = await response.text();
-            const vocab = loadVocabFromCSVContent(csvText);
-            startWithVocab(vocab);
-            loadErrorMsg.classList.add('hidden');
-            return true;
-        } catch (err) {
-            console.warn('自动加载失败', err);
-            loadErrorMsg.classList.remove('hidden');
-            startFreshBtn.disabled = true;
-            return false;
-        }
-    }
-
-    function handleManualCSV(file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            try {
-                const vocab = loadVocabFromCSVContent(e.target.result);
-                startWithVocab(vocab);
-                loadErrorMsg.classList.add('hidden');
-            } catch (err) {
-                alert('CSV解析失败：' + err.message);
-            }
-        };
-        reader.readAsText(file, 'UTF-8');
+        isQuizActive = true;
     }
 
     function loadProgressFromFile(file) {
@@ -728,6 +711,7 @@
         reader.onload = (e) => {
             try {
                 const data = JSON.parse(e.target.result);
+                // 需要确保进度文件中的词汇与当前 MASTER_VOCAB 匹配，这里直接使用进度里的 queue
                 currentQueue = data.queue;
                 userStatus = new Map(data.statusMap);
                 currentIndex = data.currentIndex;
@@ -746,6 +730,10 @@
     }
 
     function continueWeak() {
+        if (MASTER_VOCAB.length === 0) {
+            alert('请先加载词汇表');
+            return;
+        }
         const weakList = [];
         for (let w of currentQueue) {
             const s = userStatus.get(w.english);
@@ -763,7 +751,7 @@
         isQuizActive = true;
     }
 
-    // 暂停逻辑 & 暂时退出（进入结算页面）
+    // 暂停逻辑
     function showPause() {
         if (isWaiting && !isPaused && isQuizActive) {
             stopTimer();
@@ -784,28 +772,54 @@
             renderCurrent();
         }
     }
-    // 暂时退出：保存文件 + 显示结算报告
     function tempExitToResult() {
-        // 保存进度文件
         downloadStateAsFile();
-        // 显示结算界面，但不退出到菜单
         if (isPaused) {
             pauseModal.style.display = 'none';
             isPaused = false;
         }
         stopTimer();
         isWaiting = false;
-        // 直接调用展示结果（不结束队列，但展示当前报告）
         finishQuizAndShowResult(true);
-        // 确保暂停状态被清除
         isQuizActive = false;
+    }
+
+    // 自动加载 vocab.csv（不自动开始测验）
+    async function attemptAutoLoad() {
+        try {
+            const response = await fetch('vocab.csv');
+            if (!response.ok) throw new Error('HTTP error');
+            const csvText = await response.text();
+            const vocab = loadVocabFromCSVContent(csvText);
+            setVocabularyReady(vocab);
+            return true;
+        } catch (err) {
+            console.warn('自动加载失败', err);
+            loadErrorMsg.classList.remove('hidden');
+            startFreshBtn.disabled = true;
+            return false;
+        }
+    }
+
+    function handleManualCSV(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const vocab = loadVocabFromCSVContent(e.target.result);
+                setVocabularyReady(vocab);
+                loadErrorMsg.classList.add('hidden');
+            } catch (err) {
+                alert('CSV解析失败：' + err.message);
+            }
+        };
+        reader.readAsText(file, 'UTF-8');
     }
 
     // 事件绑定
     window.addEventListener('blur', () => { if (isQuizActive && isWaiting && !isPaused && !quizDiv.classList.contains('hidden')) showPause(); });
     document.addEventListener('visibilitychange', () => { if (document.hidden && isQuizActive && isWaiting && !isPaused && !quizDiv.classList.contains('hidden')) showPause(); });
 
-    startFreshBtn.onclick = () => { if (MASTER_VOCAB.length) startWithVocab(MASTER_VOCAB); else alert('请先加载词汇表'); };
+    startFreshBtn.onclick = () => startNewQuiz();
     loadSaveBtn.onclick = () => progressFileInput.click();
     progressFileInput.onchange = (e) => { if (e.target.files.length) loadProgressFromFile(e.target.files[0]); e.target.value = ''; };
     csvFileInput.onchange = (e) => { if (e.target.files.length) handleManualCSV(e.target.files[0]); e.target.value = ''; };
@@ -816,13 +830,13 @@
     definitionBtn.onclick = () => { if (isWaiting && !isPaused && isQuizActive) showDefinitionAndMark(); };
     continueWeakBtn.onclick = () => continueWeak();
     resultBackMenuBtn.onclick = () => { resultDiv.classList.add('hidden'); menuDiv.classList.remove('hidden'); isQuizActive = false; };
-    resultFullResetBtn.onclick = () => { if (MASTER_VOCAB.length) startWithVocab(MASTER_VOCAB); else alert('请先加载词汇表'); };
-    tempExitSaveBtn.onclick = () => tempExitToResult();          // 结果界面中的暂时退出
+    resultFullResetBtn.onclick = () => { if (MASTER_VOCAB.length) startNewQuiz(); else alert('请先加载词汇表'); };
+    tempExitSaveBtn.onclick = () => tempExitToResult();
     resumeQuizBtn.onclick = () => resumeFromPause();
-    tempExitFromPauseBtn.onclick = () => tempExitToResult();     // 暂停弹窗中的暂时退出
+    tempExitFromPauseBtn.onclick = () => tempExitToResult();
     closeDefBtn.onclick = () => defModal.style.display = 'none';
 
-    // 初始化：尝试自动加载
+    // 初始化：尝试自动加载，但不开始测验
     attemptAutoLoad();
 </script>
 </body>
