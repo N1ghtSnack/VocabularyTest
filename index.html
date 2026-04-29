@@ -248,6 +248,7 @@
             font-size: 0.85rem;
             margin: 1rem 0;
             line-height: 1.4;
+            white-space: pre-line;
         }
         .hidden {
             display: none;
@@ -383,7 +384,7 @@
 
     <!-- 释义弹窗 -->
     <div id="defModal" class="modal">
-        <div class="modal-card"><h3>📖 定义解释</h3><div id="definitionText" class="def-text"></div><button id="closeDefModalBtn" class="modal-btn" style="background:#1e4a76;">关闭</button></div>
+        <div class="modal-card"><h3>📖 词汇详情</h3><div id="definitionText" class="def-text"></div><button id="closeDefModalBtn" class="modal-btn" style="background:#1e4a76;">关闭</button></div>
     </div>
     <!-- 暂停弹窗 -->
     <div id="pauseModal" class="modal">
@@ -403,7 +404,7 @@
     let isPaused = false;
     let currentWordObj = null;
     let alreadyTimedOut = false;
-    let isQuizActive = false;          // 是否处于测验界面且在答题环节（用于焦点检测）
+    let isQuizActive = false;
 
     // DOM 元素
     const menuDiv = document.getElementById('menuScreen');
@@ -487,6 +488,13 @@
         });
     }
 
+    // 统一显示定义弹窗，格式：翻译：xxx\n\n释义：xxx
+    function showDefinitionDialog(wordObj) {
+        const content = `翻译：${wordObj.chinese}\n\n释义：${wordObj.definition}`;
+        document.getElementById('definitionText').innerText = content;
+        defModal.style.display = 'flex';
+    }
+
     async function recordAnswer(selectedChinese, correctChinese, vocab, wasTimeout) {
         if (!isWaiting) return;
         stopTimer();
@@ -531,8 +539,9 @@
     function showDefinitionAndMark() {
         if (!isWaiting) return;
         const vocab = currentWordObj;
-        document.getElementById('definitionText').innerHTML = vocab.definition;
-        defModal.style.display = 'flex';
+        // 显示包含翻译和释义的弹窗
+        showDefinitionDialog(vocab);
+        // 关闭弹窗时标记为未掌握释义
         const closeHandler = () => {
             defModal.style.display = 'none';
             if (isWaiting && currentWordObj === vocab) {
@@ -540,7 +549,7 @@
                 isWaiting = false;
                 userStatus.set(vocab.english, 'def_unmastered');
                 updateStatsUI();
-                document.getElementById('feedbackMsg').innerHTML = `📖 查看释义 → 标记【未掌握释义】`;
+                document.getElementById('feedbackMsg').innerHTML = `📖 查看释义 → 【未掌握释义】`;
                 disableOptionsAndMarkCorrect(vocab.chinese);
                 setTimeout(() => moveToNext(), 800);
             }
@@ -618,8 +627,7 @@
                 div.className = 'word-clickable';
                 div.innerText = `${w.english} —— ${w.chinese}`;
                 div.addEventListener('click', () => {
-                    document.getElementById('definitionText').innerHTML = w.definition;
-                    defModal.style.display = 'flex';
+                    showDefinitionDialog(w);
                 });
                 container.appendChild(div);
             });
@@ -711,7 +719,6 @@
         reader.onload = (e) => {
             try {
                 const data = JSON.parse(e.target.result);
-                // 需要确保进度文件中的词汇与当前 MASTER_VOCAB 匹配，这里直接使用进度里的 queue
                 currentQueue = data.queue;
                 userStatus = new Map(data.statusMap);
                 currentIndex = data.currentIndex;
@@ -751,7 +758,6 @@
         isQuizActive = true;
     }
 
-    // 暂停逻辑
     function showPause() {
         if (isWaiting && !isPaused && isQuizActive) {
             stopTimer();
