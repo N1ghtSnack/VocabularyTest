@@ -25,7 +25,7 @@ Common Stock,普通股,代表所有者权益的基本股份，持有者享有投
 Retained Earnings,留存收益,企业累计盈利中未作为股利分配给股东的部分，用于再投资或偿债。
 financing,融资,企业通过债务或权益方式筹集资金的活动。
 owe,欠,负有偿还债务的义务。
-cushion,垫子（缓冲）,在会计中指所有者权益对债权人形成的保护，即资产清偿负债后的剩余。
+cushion,垫子,在会计中指所有者权益对债权人形成的保护，即资产清偿负债后的剩余。
 revenue,收入,企业在日常活动中形成的、导致所有者权益增加的经济利益总流入。
 Cost of Goods Sold,营业成本,与已销售产品或服务直接相关的生产成本或采购成本。
 wages,工资支出,企业支付给员工的薪酬，属于营业费用。
@@ -207,7 +207,7 @@ Invoice Price,发票价格,供应商开具的发票上列明的价格。
 Freight-In,进货运费,购进货物支付的运输费用，计入存货成本。
 Materiality Constraint,重要性约束,会计信息允许一定程度的简化，只要不影响决策。
 Factory Overhead,制造费用,与生产相关但不直接计入产品的间接费用。
-Perpetual,永久的,永续盘存制，每次交易后更新存货记录。
+Perpetual,永续制,永续盘存制，每次交易后更新存货记录。
 Up-to-date,最新的、当日记账,保持实时更新。
 Specific Identification,个别计价法,按每件商品的实际成本结转存货的方法。
 First-In First-Out,先进先出法,假设先购入的商品先发出，期末存货为最近购入成本。
@@ -266,3 +266,87 @@ Criteria,标准,用于判断和决策的依据。
 Deposit,存款,存入银行或作为保证金的资金。
 Annuity,年金,间隔期相等的系列等额收付款项。
 Consecutive,连续的,指时间上不间断的序列。
+Bond Securities,债券,企业或政府发行的债务证券，承诺按固定利率付息并到期还本。
+Times Interest Earned Ratio,利息保障倍数,息税前利润除以利息费用，衡量企业支付利息能力。
+Discount,折价,债券发行价格低于面值的部分，或票据贴现金额。
+Premium,溢价,债券发行价格高于面值的部分。
+Retirement,退出,债券到期或提前偿还的行为。
+Tax Deductible,可抵扣税款,可在计算应纳税所得额时扣除的支出。
+Bond Principal,债券本金,债券到期时应偿还的面值金额。
+Coupon Rate,票面利率,债券上载明的、用于计算利息的固定利率。
+Nominal Rate,名义利率,债券票面利率，区别于实际利率。
+Secured Bond,担保债券,以特定资产作为抵押的债券。
+Callable Bond,可赎回债券,发行企业有权在到期前按约定价格提前赎回的债券。
+Convertible Bond,可转换债券,持有者有权将债券转换为指定数量的股票。
+Indenture,契约,债券发行人与持有人之间的法律协议。
+Bond Prospectus,债券募集说明书,向投资者披露债券发行信息的法律文件。
+Covenant,协议,债务契约中的限制性或承诺性条款。
+Bond Certificate,债券购买证,证明持有人拥有债券所有权的纸质凭证。
+Trustee,受托人,代表债券持有人利益监督发行人的独立第三方。
+Default Risk,违约风险,借款人无法按时支付利息或本金的概率。
+Rating Agency,评级机构,评定债券信用等级的机构。
+Coupon Payment,票息支付,债券按期支付的利息。
+Market Interest Rate,市场利率,金融市场上借款和贷款的现行利率。
+Effective Interest Rate,实际利率,考虑折溢价后债券的真实回报率。
+Par,面值,股票或债券上标明的名义价值。
+Zero Coupon Bonds,零息债券,不支付利息，到期一次性按面值偿还的债券。
+Straight-Line Amortization,直线摊销,将债券折溢价在存续期内平均分摊的方法。
+Debt-To-Equity Ratio,负债权益比,总负债除以总所有者权益，衡量财务杠杆。
+Business Downturn,业务衰退,经济活动普遍放缓的时期。
+Call Feature,赎回条款,允许发行人在到期前提前赎回债券的权利。
+Dividend Yield Ratio,股息率,每股股利除以每股股价，衡量投资回报。
+Stock Split,股票拆分,将一股拆分为多股，不改变股东权益总额。
+Preferred Stock,优先股,享有固定股利和清算优先权，但通常无投票权的股票。
+Sole Proprietorship,独资企业,单一所有者独自承担无限责任的企业形式。
+Accumulated Deficit,累计亏损,企业累计亏损总额，是留存收益的负数。
+Residual Claim,剩余索取权,股东在企业偿还所有债务后对剩余资产的请求权。
+Liquidation,清算,企业终止经营并分配剩余资产的过程。
+Authorized Shares,额定股份,公司章程允许发行的最大股份数量。
+Unissued Shares,未发行股份,已授权但尚未实际发行的股份。
+Outstanding Shares,发行在外股份,已由投资者持有、未包含库存股的所有股份。
+Treasury Shares,库存股,公司回购自身股票但尚未注销的部分。
+Corporate Charter,公司章程,公司设立时向政府提交的法律文件。
+Legal Capital,法定资本,公司必须维持的最低资本额，通常等于股票面值总额。
+Initial Public Offering (IPO),首次公开募股,公司首次向公众出售股票。
+Stock Option,股票期权,授予员工以特定价格购买公司股票的权利。
+Repurchase Of Stock,股票回购,公司从市场购回自身已发行股票的行为。
+Contra-Equity Account,权益对冲账户,用于抵减所有者权益总额的账户，如库存股。
+Reissuance,再发行,公司重新出售之前回购的库存股。
+Declaration Date,公告日,公司董事会宣告股利支付的日期。
+Date Of Record,登记日,确定有权获得股利的股东名单的截止日期。
+Date Of Payment,发放日,实际支付股利给股东的日期。
+Ex-Dividend Date,除息日,股票买卖不再包含即将发放的股利的日期。
+Arrear,拖欠、在后面的事情,优先股未付股利的累积额。
+Excerpt,摘录、节选,从报告或文件中提取的段落。
+Indirect Method,间接法,编制现金流量表时从净利润开始调整至经营活动现金流的方法。
+Capital Acquisitions Ratio,资本购置比率,经营活动现金流除以资本支出，衡量投资能力。
+Worn Assets,磨损资产,因使用而逐步损耗的固定资产。
+Mortgage,抵押贷款,以不动产为担保的长期借款。
+Eliminate,消除,在合并财务报表中抵消内部交易。
+Income Ratio,收入比率,某项收入占总收入的百分比。
+Proceeds,收益,出售资产或发行证券获得的现金收入。
+Utility Bill,水、电、燃气等费用账单,企业日常消耗的水、电、燃气费用的单据。
+Investment Securities,投资证券,企业持有的债券、股票等金融资产。
+Rule of Thumb,经验法则,基于实践而非严格理论的大致计算方法。
+Free Cash Flow,自由现金流,经营活动现金流减去资本支出，衡量可自由支配的现金。
+Amortized Cost Method,摊余成本法,以初始成本加或减累计摊销和减值计算金融资产价值的方法。
+Fair Value Method,公允价值法,以公允价值计量金融资产且其变动计入当期损益或综合收益的方法。
+Passive Investments,被动投资,持有其他企业股权但不具有重大影响力的投资。
+Controlling Interest,控股权,持有半数以上投票权，能控制另一家企业。
+Idle Cash,闲置资金,未用于投资或运营的现金。
+Investments To Be Held To Maturity,持有至到期投资,企业有意愿和能力持有至到期的债务证券。
+Equity Method,权益法,对被投资单位具有重大影响的长期股权投资的会计方法。
+Vertical Integration,纵向一体化,企业收购上下游产业链的合并策略。
+Horizontal Growth,横向增长,通过并购同行业竞争对手实现扩张。
+Operational Synergy,运营协同,并购后产生的成本节约或收入提升效应。
+Acquisition Accounting And Consolidation,并购会计和合并,购买法下编制合并财务报表的处理。
+Available For Sale,可供出售,持有的金融资产中既非交易性也非持有至到期的类别。
+Fair Value Adjusting Entry,公允价值调整分录,将资产账面价值调整至公允价值的会计分录。
+Other Comprehensive Income,其他综合收益,直接计入权益、不通过当期损益的利得或损失。
+Investments Portfolio,投资组合,企业持有的多种金融资产的集合。
+Affiliate,关联企业,通过股权关系与其他企业存在联系的公司。
+Mergers And Acquisitions (M&A),兼并与收购,企业通过合并或购买取得其他企业控制权的活动。
+Acquisition Method,购买法,企业合并中将购买成本分摊到可辨认资产和负债的会计方法。
+Purchase Price Allocation,收购价格分摊,将购买价格分配给所取得的各项资产和负债的过程。
+Identifiable Intangible Assets,可辨认的无形资产,能够从企业单独分离或出售的无形资产，如专利、客户关系。
+Unrealized Gain/Loss,未实现收益或损失,资产公允价值变动但尚未通过交易实现的损益。
